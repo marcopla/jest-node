@@ -8,12 +8,20 @@ describe('Testes do carrinho', () => {
   });
   it('Deve ter itens', () => {
     const item = new Item('Banana', 2, 5);
+    console.log(item);
     const item2 = new Item('Maçã', 0.5, 1);
     const carrinho = new Carrinho();
     carrinho.adiciona(item);
     carrinho.adiciona(item2);
+    console.log(carrinho);
     expect(typeof carrinho).toBe('object');
-    expect(carrinho[0]).toBe(item);
-    expect(carrinho[1]).toBe(item2);
+    expect(carrinho.itens[0]).toBe(item);
+    expect(carrinho.itens[1]).toBe(item2);
+    expect(carrinho.itens).toContain(item);
+    expect(carrinho.itens).toContain(item);
+  });
+  it('Deve ter a propriedade "total" na inicialização.', () => {
+    const carrinho = new Carrinho();
+    expect(carrinho).toHaveProperty('total');
   });
 });
